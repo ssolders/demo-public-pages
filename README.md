@@ -1,5 +1,6 @@
 # demo-public-pages
 
+* [Checkout demo](https://ssolders.github.io/demo-public-pages/checkout-santander.html)
 * [Provider window Interac inline](https://ssolders.github.io/demo-public-pages/cashier-inline-popup.html)
 * [Provider window Interac popup](https://ssolders.github.io/demo-public-pages/cashier-popup.html)
 * [Provider window Paypal inline](https://ssolders.github.io/demo-public-pages/cashier-paypal-inline-popup.html)
