@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cashier</title>
+    <script type=text/javascript src='https://static.paymentiq.io/cashier/cashier.js'></script>
+    <style>
+      body {
+        margin: 0px;
+      }
+
+      #loader {
+        transition: opacity .1s ease-in;
+        width: 200px;
+        margin: 0 auto;
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        margin-left: -100px;
+      }
+      
+      #cashier {
+        transition: opacity .1s ease-in;
+        opacity: 0;
+        transition-delay: 1.6s;
+        width: 500px;
+        max-width: 100%;
+        margin: 20px auto;
+        border-radius: 15px;
+        height: 1200px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div id="loader">Loading</div>
+    <div id='cashier'></div>
+      <script>
+
+          const lookupConfig = {
+            source: 'mock',
+            country: 'sweden',
+            identifyFields: ['email', 'zip']
+          }
+
+          var CashierInstance = new _PaymentIQCashier('#cashier', 
+          {
+            "environment": "test",
+            "userId": "PayTestSE",
+            "merchantId": '1014',
+            "amount": "499",
+            "showAccounts": "inline",
+            "globalSubmit": true,
+            "showListHeaders": true,
+            "showAccounts": "false",
+            "mode": "ecommerce",
+            "locale": "sv_SE",
+            "font": 'custom,santander,santander',
+            lookupConfig: {
+              ...lookupConfig
+            },
+            "theme": {
+              "buttons": {
+                "color": "#eb0000"
+              }
+            }
+          },
+          (api) => {
+              var start = null
+              var loader = document.getElementById('loader')
+              var element = document.getElementById('cashier')
+              function step(timestamp) {
+                if (!start) start = timestamp
+                var progress = timestamp - start
+                if (progress < 2000) {
+                  window.requestAnimationFrame(step)
+                  
+                  element.style.opacity = '1'
+                  setTimeout(() => {
+                    loader.style.opacity = '0';
+                    loader.style.zIndex = '-1';
+                  }, 500)
+                  
+                }
+              }
+              window.requestAnimationFrame(step)
+              api.on({
+                isVisible: () => {
+                  console.log('VISIBLE')
+                },
+                cashierInitLoad: () => {
+                  api.css(`
+                    .cashier-section-header {
+                      margin-left: 0px !important;
+                      margin-bottom: 10px !important;
+                      margin-top: 10px !important;
+                      border: 0px !important;
+                    }
+
+                    #cashier h5 {
+                      color: #5a5a5a!important;
+                    }
+                    #cashier .dropdown-toggler {
+                      border: 1px solid;
+                      padding: 10px;
+                    }
+                    
+                    #cashier .list-payment-methods {
+                      padding: 10px 0!important;
+                    }
+                    #cashier .main-header-container h3.payment-method-label {
+                      font-size: 15px!important;
+                      position: relative;
+                      top: -2px;
+                      font-weight: 600;
+                    }
+
+                    .bambora-logo img {
+                      display: block;
+                      -moz-box-sizing: border-box;
+                      box-sizing: border-box;
+                      background: url(https://static.paymentiq.io/santander.svg) no-repeat;
+                      width: 100px; /* Width of new image */
+                      height: 20px; /* Height of new image */
+                      padding-left: 150px; /* Equal to width of new image */
+                      margin-left: -10px;
+                    }
+                    @media (min-width: 767px) {
+                      .payment-method-details {
+                        padding: 10px 50px!important;
+                      }
+
+                      .cashier-section-header {
+                        margin-left: 0px !important;
+                        padding-left: 12px !important;
+                      }
+                    }      
+                    #cashier .list-payment-methods .payment-method:hover {
+                      box-shadow: 0 5px 20px 0 rgba(0,0,0,.1);
+                    }
+                    #cashier .list-payment-methods .payment-method {
+                      transition: all .2s cubic-bezier(.25,.8,.25,1)!important;
+                      box-shadow: none;
+                      overflow: hidden;
+                      margin-bottom: 8px;        
+                      border-radius: 7px;
+                      border: 1px solid #cfcfcf!important;
+                    }
+                    #cashier .payment-method.active {
+                      border-color: #a3a3a3!important;
+                    }
+                    #cashier .payment-method .payment-method-header {
+                      padding: 10px 15px!important;
+                      border-radius: 7px;
+                      background-color: #fff;
+                      border: none!important;
+                    }
+              
+                    #cashier .list-payment-methods {
+                      padding: 10px 10px !important;
+                    }
+                  
+                  `)
+                },
+                success: () => {
+                  console.log('CASHIER SUCCESS')
+                }
+              })
+            }
+          )
+      </script>
+  </body>
+</html>
