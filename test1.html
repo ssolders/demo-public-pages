@@ -13,17 +13,11 @@
     <div id='cashier'></div>
     <script>
     var CashierInstance = new _PaymentIQCashier('#cashier', {
-      "merchantId": "100200001",
-      "userId": "8900333",
-      "sessionId": "6b351eab-963a-47e4-a144-713d6509b24e",
-      "environment": "production",
-      "containerHeight": 'auto',
-      "containerWidth": '100%',
-      amount: 15,
-      "containerMinHeight": "90vh",
-      "predefinedAmounts": ['200', '500', '1000'],
-      "method": "deposit",
-      "allowMobilePopup": true
+      "merchantId": "1014",
+      "userId": "PayTestSE",
+      "environment": "test",
+      "amount": 15,
+      "predefinedAmounts": ['200', '500', '2000']
     }, (api) => {    
         api.on({
           cashierInitLoad: function () {
