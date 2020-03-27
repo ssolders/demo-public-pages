@@ -13,12 +13,16 @@
     <div id='cashier'></div>
     <script>
     var CashierInstance = new _PaymentIQCashier('#cashier', {
-      "merchantId": "1015",
+      "merchantId": "1014",
       "userId": "PayTestSE",
       "environment": "test",
       "amount": 15,
       "predefinedAmounts": ['200', '500', '2000'],
-      "showAccounts": "inline"
+      "showAccounts": "inline",
+      "theme": {
+        input: {
+          fontSize: '14px'
+      }
     }, (api) => {    
         api.on({
           cashierInitLoad: function () {
