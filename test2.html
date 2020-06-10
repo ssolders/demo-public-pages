@@ -14,11 +14,15 @@
     var CashierInstance = new _PaymentIQCashier('#cashier', {
       "merchantId": "1014",
       "userId": "PayTestMobile",
-      "environment": "development",
+      "environment": "test",
       "amount": 100,
+      "mode": "ecommerce",
+      "predefinedValues": false,
+      "showHeader": false,
+      "providerType": "swish",
       "predefinedAmounts": ['200', '500', '2000'],
-      "showAccounts": "inline",
-    }, (api) => {    
+      "providerType": "creditcard"
+    }, function (api) {    
         api.on({
           cashierInitLoad: function () {
             console.log('asdf')
