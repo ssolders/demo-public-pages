@@ -16,13 +16,10 @@
       "userId": "PayTestSE",
       "environment": "test",
       "amount": 100,
-      "mode": "ecommerce",
-      "allowMobilePopup": true,
-      "predefinedValues": false,
       "showHeader": false,
-      "showReceipt": false,
-      "providerType": "zimpler",
-      "predefinedAmounts": ['200', '500', '2000'],
+      "showReceipt": true,
+      "receiptBackBtn": true,
+      "allowCancelPendingWithdrawal": true
     }, function (api) {    
         api.on({
           cashierInitLoad: function () {
