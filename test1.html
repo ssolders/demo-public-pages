@@ -22,10 +22,7 @@
       "showAccounts": "inline",
     }, function (api) {
         api.on({
-          success: (data) => {
-            console.log('Transaction was completed successfully', data)
-          },
-          cashierInitLoad: function () {
+          success: data => console.log('Transaction was completed successfully', data)          cashierInitLoad: function () {
             console.log('asdf')
           },
           paymentMethodSelect: data => console.log('Payment method was selected', data)
