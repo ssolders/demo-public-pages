@@ -41,7 +41,8 @@
         api.on({
           cashierInitLoad: function () {
             hj('stateChange', 'some/relative/path');
-          }
+          },
+          navigate: route => hj('stateChange', route);,
         })
       }
     )    
