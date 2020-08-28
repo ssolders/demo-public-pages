@@ -44,6 +44,7 @@
                   var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?myNewUrlQuery=1';
                   window.history.pushState({path:newurl},'',newurl);
               }
+            hj('stateChange', 'some/relative/path');
           }
         })
       }
