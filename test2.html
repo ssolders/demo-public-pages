@@ -40,9 +40,13 @@
     }, function (api) {    
         api.on({
           cashierInitLoad: function () {
-            hj('stateChange', 'some/relative/path')
+            hj('stateChange', '?hello=world')
+            hj('vpv', '?hello=world');
           },
-          navigate: route => hj('stateChange', route)
+          navigate: route => {
+            hj('stateChange', route)
+            hj('vpv', route);
+          }
         })
       }
     )    
