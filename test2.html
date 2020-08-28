@@ -40,7 +40,10 @@
     }, function (api) {    
         api.on({
           cashierInitLoad: function () {
-            console.log('asdf')
+              if (history.pushState) {
+                  var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?myNewUrlQuery=1';
+                  window.history.pushState({path:newurl},'',newurl);
+              }
           }
         })
       }
