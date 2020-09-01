@@ -17,6 +17,7 @@
       "merchantId": "1014",
       "userId": "PayTestMobile",
       "environment": "test",
+      "country": 'SE',
       "amount": 100,
       "receiptBackBtn": true,
       "predefinedAmounts": ['200', '500', '2000'],
@@ -26,6 +27,20 @@
           success: data => console.log('Transaction was completed successfully', data),
           cashierInitLoad: function () {
             console.log('asdf')
+            api.set({
+              order: {
+               orderItems: [
+                 {
+                  label: 'Sunglasses',
+                  price: '120 SEK'
+                },
+                {
+                  label: 'Sun lotion',
+                  price: '80 SEK'
+                }
+               ]
+              }
+            })
           },
           paymentMethodSelect: data => console.log('Payment method was selected', data)
         })
