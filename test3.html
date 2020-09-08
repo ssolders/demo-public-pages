@@ -5,29 +5,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Cashier</title>
-        <script type=text/javascript src='https://static.paymentiq.io/cashier/cashier.experimental.js'></script>
+        <script type=text/javascript src='https://static.paymentiq.io/cashier/cashier.js'></script>
         <style> html, body { margin: 0px; height: 100%; width: 100%; } #cashier { height: 100vh; width: 600px; max-width: 100%; }</style>
     </head>
     <body>
-      <a style='height: 50px; display: block;' href='fb-messenger://user-thread/105694521080321'>FB Link 1</a>
     <div id='cashier'></div>
     <script>
     var CashierInstance = new _PaymentIQCashier('#cashier', {
-      "merchantId": "1405",
-      "userId": "TEST_SEK",
+      "merchantId": "1014",
+      "userId": "PayTestSE",
       "environment": "test",
       "amount": 100,
-      "mode": "ecommerce",
-      providerType: "swish",
-      "showAccounts": "inline",
-    }, function (api) {
-        api.on({
-          cashierInitLoad: function () {
-            console.log('asdf')
-          }
-        })
-      }
-    )
+      "showHeader": false,
+      "showReceipt": true,
+      "receiptBackBtn": true,
+      "tabs": true,
+      "hotjarTag": "1981083",
+      "history": true,
+      "pendingTab": true,
+      "pendingTxHeader": false,
+      "allowCancelPendingWithdrawal": true
+    }, function (api) {}
+    )    
   </script>
   </body>
 </html>
