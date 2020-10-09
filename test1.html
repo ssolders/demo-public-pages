@@ -27,6 +27,11 @@
           failure: data => console.log('Transaction failed', data),
           paymentMethodSelect: data => console.log('Payment method was selected', data)
         })
+        api.set({
+          config: {
+            amount: '155'
+          }
+        })
       }
     )
   </script>
