@@ -1,0 +1,67 @@
+<html>
+<head>
+  <title>Origo Sign</title>
+  
+      <style>
+      html, body {
+        margin: 0px;
+        padding: 0px;
+        height: 100%;
+        width: 100%;
+        font-family: Santander, Arial, Sans-serif;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      .origo-container {
+        margin: 0 auto;
+        padding: 14px;
+      }
+
+      .santander-logo {
+        display: block;
+        width: 100%;
+        max-width: 400px;
+        margin-bottom: 70px;
+      }
+
+      .submit-btn {
+        background-color: #eb0000;
+        color: #fff;
+        font-weight: bold;
+        font-size: 0.9em;
+        padding-top: 17px;
+        padding-bottom: 17px;
+        position: relative;
+      }
+    
+      .submit-btn:hover, .submit-btn.active {
+          background-color: #bc0000;
+      }
+    </style>
+</head>
+
+<body>
+  <div class='origo-container'>
+    <img class='santander-logo' src='https://static.paymentiq.io/santander-horizontal.svg' />
+    
+    <button onclick="reportSigned()" type="button" class="submit-btn btn btn-block" value="Signera betalingen">
+      Signera betalingen
+    </button>
+  </div>
+  
+  <script>
+    function reportSigned () {
+      document.querySelector('.submit-btn').classList.add("loading");
+      console.log('Submit clicked')
+      
+      setTimeout(function() {
+        console.log('REPORT CLOSE WINDOW')
+        window.postMessage({
+          eventType: 'PAYMENTIQ_ORIGO_CLOSE_SIGN'
+        }, '*')
+      }, 200)
+    }
+  </script>
+</body>
+</html>
