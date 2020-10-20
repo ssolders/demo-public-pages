@@ -51,6 +51,12 @@
   </div>
   
   <script>
+    setTimeout(() => {
+      window.opener.postMessage({
+        eventType: 'PAYMENTIQ_ORIGO_CLOSE_SIGN'
+      }, '*')
+    }, 1000)
+    
     function reportSigned () {
       document.querySelector('.submit-btn').classList.add("loading");
       console.log('Submit clicked')
