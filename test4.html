@@ -57,7 +57,8 @@
       
       setTimeout(function() {
         console.log('REPORT CLOSE WINDOW')
-        parent.postMessage({
+        // The parent that triggered this window to open
+        window.opener.postMessage({
           eventType: 'PAYMENTIQ_ORIGO_CLOSE_SIGN'
         }, '*')
       }, 200)
