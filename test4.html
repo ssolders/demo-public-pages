@@ -51,23 +51,28 @@
   </div>
   
   <script>
-    setTimeout(() => {
-      window.opener.postMessage({
-        eventType: 'PAYMENTIQ_ORIGO_CLOSE_SIGN'
-      }, '*')
-    }, 1000)
+    /*
+      setTimeout(() => {
+        window.opener.postMessage({
+          eventType: 'PAYMENTIQ_ORIGO_CLOSE_SIGN'
+        }, '*')
+      }, 1000)
+    */ 
     
     function reportSigned () {
       document.querySelector('.submit-btn').classList.add("loading");
       console.log('Submit clicked')
       
-      setTimeout(function() {
-        console.log('REPORT CLOSE WINDOW')
-        // The parent that triggered this window to open
-        window.opener.postMessage({
-          eventType: 'PAYMENTIQ_ORIGO_CLOSE_SIGN'
-        }, '*')
-      }, 200)
+      window.location = 'http://static.paymentiq.io/cashier/sign-status-redirect.html'
+      /*
+        setTimeout(function() {
+          console.log('REPORT CLOSE WINDOW')
+          // The parent that triggered this window to open
+          window.opener.postMessage({
+            eventType: 'PAYMENTIQ_ORIGO_CLOSE_SIGN'
+          }, '*')
+        }, 200)
+      */
     }
   </script>
 </body>
