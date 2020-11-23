@@ -15,7 +15,6 @@
       "merchantId": "1014",
       "userId": "PayTestMobile",
       "environment": "test",
-      "amount": 100,
       "showHeader": false,
       "showReceipt": true,
       "receiptBackBtn": true
@@ -27,6 +26,12 @@
             tabs: true
           }
         })
+      }, 1500)
+      
+      api.on({
+        cashierInitLoad: () => console.log('Cashier init load'),
+        update: data => console.log('The passed in data was set', data),
+        success: data => console.log('Transaction was completed successfully', data)
       })
 
     })    
