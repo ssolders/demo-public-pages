@@ -1,79 +1,35 @@
-<html>
-<head>
-  <title>Origo Sign</title>
-  
-      <style>
-      html, body {
-        margin: 0px;
-        padding: 0px;
-        height: 100%;
-        width: 100%;
-        font-family: Santander, Arial, Sans-serif;
-        overflow-x: hidden;
-        overflow-y: auto;
-      }
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Cashier</title>
+        <script type=text/javascript src='https://static.paymentiq.io/cashier/cashier.1.2.5.js'></script>
+        <style> html, body { margin: 0px; height: 100%; width: 100%; } #cashier { height: 100vh; width: 600px; max-width: 100%; }</style>
+    </head>
+    <body>
+    <div id='cashier'></div>
+    <script>
+    var CashierInstance = new _PaymentIQCashier('#cashier', {
+      "merchantId": "1014",
+      "userId": "PayTestMobile",
+      "environment": "test",
+      "amount": 100,
+      "showHeader": false,
+      "showReceipt": true,
+      "receiptBackBtn": true
+    }, function (api) {
+      setTimeout(function () {
+        api.set({
+          config: {
+            amount: 155,
+            tabs: true
+          }
+        })
+      })
 
-      .origo-container {
-        margin: 0 auto;
-        padding: 14px;
-      }
-
-      .santander-logo {
-        display: block;
-        width: 100%;
-        max-width: 400px;
-        margin-bottom: 70px;
-      }
-
-      .submit-btn {
-        background-color: #eb0000;
-        color: #fff;
-        font-weight: bold;
-        font-size: 0.9em;
-        padding-top: 17px;
-        padding-bottom: 17px;
-        position: relative;
-      }
-    
-      .submit-btn:hover, .submit-btn.active {
-          background-color: #bc0000;
-      }
-    </style>
-</head>
-
-<body>
-  <div class='origo-container'>
-    <img class='santander-logo' src='https://static.paymentiq.io/santander-horizontal.svg' />
-    
-    <button onclick="reportSigned()" type="button" class="submit-btn btn btn-block" value="Signera betalingen">
-      Signera betalingen
-    </button>
-  </div>
-  
-  <script>
-    /*
-      setTimeout(() => {
-        window.opener.postMessage({
-          eventType: 'PAYMENTIQ_ORIGO_CLOSE_SIGN'
-        }, '*')
-      }, 1000)
-    */ 
-    
-    function reportSigned () {
-      document.querySelector('.submit-btn').classList.add("loading");
-      console.log('Submit clicked')
-      
-      window.location = 'http://static.paymentiq.io/cashier/sign-status-redirect.html'
-      /*
-        setTimeout(function() {
-          console.log('REPORT CLOSE WINDOW')
-          // The parent that triggered this window to open
-          window.opener.postMessage({
-            eventType: 'PAYMENTIQ_ORIGO_CLOSE_SIGN'
-          }, '*')
-        }, 200)
-      */
-    }
+    })    
   </script>
-</body>
+  </body>
 </html>
