@@ -26,20 +26,6 @@
         })
       }, 1500)
       
-      api.css(`
-        .tabs .tab {
-          background-color: #ccc;
-          padding: 20px;
-          margin-left: 0px;
-          margin-right: 0px;
-          border-bottom: 2px solid #000;
-        }
-
-        .tabs .tab.active {
-          border-bottom: 2px solid red;
-        }
-      `)
-      
       api.on({
         cashierInitLoad: () => console.log('Cashier init load'),
         update: data => console.log('The passed in data was set', data),
