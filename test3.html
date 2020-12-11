@@ -15,21 +15,13 @@
       "merchantId": "1014",
       "userId": "PayTestSE",
       "environment": "test",
+      "amount": "50",
+      "providerType": "creditcard",
       "showAccounts": "inline",
-      "fetchConfig": "true",
       "showHeader": false,
       "showReceipt": true,
       "receiptBackBtn": true
     }, function (api) {
-      setTimeout(function () {
-        api.set({
-          config: {
-            amount: 155,
-            tabs: true
-          }
-        })
-      }, 1500)
-      
       api.on({
         cashierInitLoad: () => console.log('Cashier init load'),
         update: data => console.log('The passed in data was set', data),
