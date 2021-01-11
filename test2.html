@@ -12,22 +12,11 @@
     <div id='cashier'></div>
     <script>
     var CashierInstance = new _PaymentIQCashier('#cashier', {
-      "merchantId": "1200",
-      "userId": "WIRECAPITAL_USD",
+      "merchantId": "1014",
+      "userId": "PayTestSE",
       "environment": "test",
-      "listType": "grid",
-      "showAccounts": "inline",
-      "fetchConfig": "true"
+      "showAccounts": "inline"
     }, function (api) {
-      setTimeout(function () {
-        api.set({
-          config: {
-            amount: 155,
-            tabs: true
-          }
-        })
-      }, 1500)
-      
       api.on({
         cashierInitLoad: () => console.log('Cashier init load'),
         update: data => console.log('The passed in data was set', data),
