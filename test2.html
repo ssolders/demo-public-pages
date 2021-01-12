@@ -18,7 +18,10 @@
       "showAccounts": "inline"
     }, function (api) {
       api.on({
-        cashierInitLoad: () => console.log('Cashier init load'),
+        cashierInitLoad: () => function () {
+          debugger;
+          console.log('Cashier init load')
+        },
         update: data => console.log('The passed in data was set', data),
         success: data => console.log('Transaction was completed successfully', data)
       })
