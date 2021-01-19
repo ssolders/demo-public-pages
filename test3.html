@@ -23,6 +23,12 @@
       "showReceipt": true,
       "receiptBackBtn": true
     }, function (api) {
+      api.set({
+        attributes: {
+          foo: 'bar'
+        }
+      })
+      
       api.on({
         cashierInitLoad: () => {
           CashierInstance.set({
