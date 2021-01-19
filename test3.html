@@ -13,7 +13,7 @@
     <script>
     var CashierInstance = new _PaymentIQCashier('#cashier', {
       "merchantId": "1014",
-      "userId": "PayTestMobile",
+      "userId": "PayTestSE",
       "environment": "test",
       "amount": "50",
       "providerType": "paypal",
@@ -24,7 +24,13 @@
       "receiptBackBtn": true
     }, function (api) {
       api.on({
-        cashierInitLoad: () => console.log('Cashier init load'),
+        cashierInitLoad: () => {
+          CashierInstance.set({
+            attributes: {
+              labelId: '12345'
+            }
+          })
+        },
         update: data => console.log('The passed in data was set', data),
         success: data => console.log('Transaction was completed successfully', data)
       })
