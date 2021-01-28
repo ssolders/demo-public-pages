@@ -9,19 +9,26 @@
         <style> html, body { margin: 0px; height: 100%; width: 100%; } #cashier { height: 100vh; width: 600px; max-width: 100%; }</style>
     </head>
     <body>
+      <button onclick='setSinglePayFlow()'>Action</button>
     <div id='cashier'></div>
     <script>
+    const __API__ = null
+      
     var CashierInstance = new _PaymentIQCashier('#cashier', {
       "merchantId": "1014",
       "userId": "PayTestSE",
       "environment": "test",
       "amount": "50",
+      "tabs": true,
+      "history": true,
       "showAccounts": "inline",
       "showHeader": false,
       "newPaymentBtn": true,
       "showReceipt": true,
       "receiptBackBtn": true
     }, function (api) {
+      __API__ = api
+      
       api.set({
         attributes: {
           foo: 'bar'
@@ -41,6 +48,14 @@
       })
 
     })    
-  </script>
+    
+    function setSinglePayFlow () {
+      __API__.set({
+        config: {
+          singlePageFlow: true
+        }
+      })
+    }
+    </script>
   </body>
 </html>
