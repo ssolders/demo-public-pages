@@ -11,51 +11,34 @@
     <body>
     <div id='cashier'></div>
     <script>
-    let __API__ = null
-      
-    var CashierInstance = new _PaymentIQCashier('#cashier', {
-      "merchantId": "1014",
-      "userId": "PayTestEUR",
-      "environment": "test",
-      "amount": "50",
-      "tabs": true,
-      "history": true,
-      "showAccounts": "inline",
-      "showHeader": false,
-      "newPaymentBtn": true,
-      "showReceipt": true,
-      "allowMobilePopup": true,
-      "receiptBackBtn": true
-    }, function (api) {
-      __API__ = api
-      
-      api.set({
-        attributes: {
-          foo: 'bar'
-        }
-      })
-      
-      api.on({
-        cashierInitLoad: () => {
-          CashierInstance.set({
-            attributes: {
-              labelId: '12345'
+      let __API__ = null
+
+      var CashierInstance = new _PaymentIQCashier('#cashier', {
+        "merchantId": "1014",
+        "userId": "PayTestSE",
+        "environment": "test",
+        "locale": 'sv_SE',
+        "amount": "50",
+        "tabs": true,
+        "history": true,
+        "showAccounts": "inline",
+        "showHeader": false,
+        "newPaymentBtn": true,
+        "showReceipt": true,
+        "allowMobilePopup": true,
+        "receiptBackBtn": true
+      }, function (api) {
+        __API__ = api
+
+        setTimeout(function() {
+          api.set({
+            config: {
+              locale: 'en_GB'
             }
           })
-        },
-        update: data => console.log('The passed in data was set', data),
-        success: data => console.log('Transaction was completed successfully', data)
-      })
 
-    })    
-    
-    function setSinglePayFlow () {
-      __API__.set({
-        config: {
-          singlePageFlow: true
-        }
-      })
-    }
+        }, 2500)
+      })    
     </script>
   </body>
 </html>
