@@ -17,15 +17,19 @@
       "environment": "test",
       "showAccounts": "inline"
     }, function (api) {
-      api.on({
-        cashierInitLoad: () => {
-          debugger;
-          console.log('Cashier init load')
-        },
-        update: data => console.log('The passed in data was set', data),
-        success: data => console.log('Transaction was completed successfully', data)
-      })
-      
+      api.set({
+        order: {
+          [{
+            label: 'Sunglasses',
+            price: '120 SEK'
+          },
+          {
+            label: 'Sun lotion',
+            price: '65 SEK'
+          }],
+          freightFee: '100'
+        }
+      })      
     })    
   </script>
   </body>
