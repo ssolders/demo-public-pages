@@ -29,6 +29,21 @@
         "receiptBackBtn": true
       }, function (api) {
         __API__ = api
+        let providerWasOpened = false
+        
+        api.on({
+          newProviderWindow: data => {
+            providerWasOpened = true
+        },
+        navigate: data => {
+          debugger
+          if (providerWasOpened && data.data.path === '/') {
+            // user clicked back during the provider flow, meaning we end up with an orderId + an initiated transaction in PIQ
+            // In this case, we must generate a new orderId which we can do by reloading the page.
+            location.reload()
+          }
+        }
+        })
 
         setTimeout(function() {
           api.set({
