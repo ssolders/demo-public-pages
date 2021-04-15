@@ -32,7 +32,7 @@
         let providerWasOpened = false
         
         api.on({
-          newProviderWindow: (data) => {
+          transactionInit: (data) => {
             providerWasOpened = true
           },
           navigate: data => {
