@@ -37,6 +37,12 @@
         }
       }
     }, function (api) {
+        api.css(`
+          .dropdown-selected .logo-container, .dropdown-content .logo-container {
+            display: none;
+          }       
+        `)
+      
         api.on({
           success: data => console.log('Transaction was completed successfully', data),
           failure: data => console.log('Transaction failed', data),
